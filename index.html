@@ -4,6 +4,24 @@
     <title>Redirect Button</title>
 </head>
 <body>
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h2>Web Launcher</h2>
+        <input type="text" id="urlInput" placeholder="Paste link here...">
+        
+        <button class="btn" onclick="launchCustom()">Launch Cloaked</button>
+        
+        <div class="info">Panic Key: <strong>ESC</strong> (Redirects to Google Classroom)</div>
+    </div>
+
+    <script>
+    function launchCustom() {
+        let targetUrl = document.getElementById('urlInput').value.trim();
+        // Safe site changed to Google Classroom
+        const safeSite = "https://global-zone05.renaissance-go.com/studentportal/";
 
     <!-- This is the button the user clicks -->
     <button onclick="openInBlank()">Launch Website</button>
