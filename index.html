@@ -1,34 +1,41 @@
-<script>
-(function() {
-    function openAboutBlank() {
-        // Open a new empty window
-        var win = window.open();
-        if (!win) {
-            alert("Please allow pop-ups for this site to work.");
+<!DOCTYPE html>
+<html>
+<head>
+    <title>About:Blank Loader</title>
+</head>
+<body>
+    <!-- Button to trigger the blank tab -->
+    <button onclick="openCloaked()" style="padding: 10px 20px; cursor: pointer;">
+        Launch Site
+    </button>
+
+    <script>
+    function openCloaked() {
+        // REPLACE THE URL BELOW WITH YOUR GOOGLE SITE URL
+        const url = 'https://edpuzzle.co.com/?/';
+        
+        // Opens the about:blank window
+        const win = window.open();
+        if (!win || win.closed) {
+            alert('Please allow pop-ups to open the site.');
             return;
         }
 
-        // Get current URL (handles https:// and www. automatically)
-        var url = window.location.href;
-        
-        // Create a full-screen iframe inside the new window
-        var iframe = win.document.createElement('iframe');
-        iframe.style.width = "100vw";
-        iframe.style.height = "100vh";
-        iframe.style.border = "none";
-        iframe.style.position = "fixed";
-        iframe.style.top = "0";
-        iframe.style.left = "0";
+        // Create the iframe to host your site
+        const iframe = win.document.createElement('iframe');
+        iframe.style.width = '100%';
+        iframe.style.height = '100%';
+        iframe.style.border = 'none';
+        iframe.style.position = 'fixed';
+        iframe.style.top = '0';
+        iframe.style.left = '0';
         iframe.src = url;
 
-        // Clean up margins and inject the iframe
-        win.document.body.style.margin = "0";
-        win.document.body.style.padding = "0";
-        win.document.body.style.overflow = "hidden";
+        // Clean up the blank page margins and add the iframe
+        win.document.body.style.margin = '0';
+        win.document.body.style.padding = '0';
         win.document.body.appendChild(iframe);
     }
-
-    // Google Sites requires a button click (user gesture) to open new windows
-    document.write('<button onclick="openAboutBlank()" style="padding: 12px 24px; background: #4285F4; color: white; border: none; border-radius: 4px; cursor: pointer; font-family: sans-serif;">Launch Cloaked Site</button>');
-})();
-</script>
+    </script>
+</body>
+</html>
