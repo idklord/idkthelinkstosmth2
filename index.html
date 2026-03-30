@@ -1,41 +1,36 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>About:Blank Loader</title>
+    <title>Redirect Button</title>
 </head>
 <body>
-    <!-- Button to trigger the blank tab -->
-    <button onclick="openCloaked()" style="padding: 10px 20px; cursor: pointer;">
-        Launch Site
-    </button>
+
+    <!-- This is the button the user clicks -->
+    <button onclick="openInBlank()">Launch Website</button>
 
     <script>
-    function openCloaked() {
-        // REPLACE THE URL BELOW WITH YOUR GOOGLE SITE URL
-        const url = 'https://edpuzzle.co.com/?/';
-        
-        // Opens the about:blank window
-        const win = window.open();
-        if (!win || win.closed) {
-            alert('Please allow pop-ups to open the site.');
-            return;
+        function openInBlank() {
+            // 1. SET YOUR URL HERE
+            var url = "https://www.wikipedia.org"; 
+            
+            // 2. Open a new window with 'about:blank'
+            var win = window.open('about:blank', '_blank');
+            
+            // 3. Style the new window to be full screen
+            win.document.body.style.margin = '0';
+            win.document.body.style.height = '100vh';
+            
+            // 4. Create an iframe and point it to your URL
+            var iframe = win.document.createElement('iframe');
+            iframe.style.border = 'none';
+            iframe.style.width = '100%';
+            iframe.style.height = '100%';
+            iframe.src = url;
+            
+            // 5. Add the iframe to the blank page
+            win.document.body.appendChild(iframe);
         }
-
-        // Create the iframe to host your site
-        const iframe = win.document.createElement('iframe');
-        iframe.style.width = '100%';
-        iframe.style.height = '100%';
-        iframe.style.border = 'none';
-        iframe.style.position = 'fixed';
-        iframe.style.top = '0';
-        iframe.style.left = '0';
-        iframe.src = url;
-
-        // Clean up the blank page margins and add the iframe
-        win.document.body.style.margin = '0';
-        win.document.body.style.padding = '0';
-        win.document.body.appendChild(iframe);
-    }
     </script>
+
 </body>
 </html>
